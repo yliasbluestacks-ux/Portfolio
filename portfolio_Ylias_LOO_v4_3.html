@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ylias Loo — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0f0f12;
+  --dark: #1a1a24;
+  --card: #1e1e2a;
+  --border: #2a2a3a;
+  --border-light: #32324a;
+  --blue: #4b7cf3;
+  --blue-light: #6b96f7;
+  --violet: #7c5cbf;
+  --violet-light: #9b7fd4;
+  --text: #e8e8f0;
+  --text-muted: #8888a8;
+  --text-dim: #55556a;
+  --white: #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(15, 15, 18, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5rem;
+  height: 64px;
+}
+
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  color: var(--white);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.nav-logo span { color: var(--blue-light); }
+
+.nav-links {
+  display: flex; gap: 0; list-style: none;
+}
+
+.nav-links a {
+  display: flex; align-items: center;
+  padding: 0 1.25rem; height: 64px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+  border-left: 1px solid var(--border);
+}
+
+.nav-links a:hover { color: var(--text); }
+.nav-links li:last-child a { border-right: 1px solid var(--border); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr auto 0.9fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 9rem 5rem 5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── PHOTO ── */
+.hero-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-placeholder {
+  width: 180px;
+  height: 220px;
+  border: 1px dashed var(--border-light);
+  border-radius: 8px;
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--text-dim);
+}
+
+.photo-placeholder svg { opacity: 0.4; }
+
+.photo-placeholder span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--blue-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: block; width: 28px; height: 1px;
+  background: var(--blue-light);
+}
+
+h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+h1 em {
+  font-style: normal;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--violet-light);
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem; font-weight: 500;
+  text-decoration: none; cursor: pointer; border: none;
+  border-radius: 4px;
+  transition: all 0.18s ease;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+}
+.btn-ghost:hover { color: var(--text); border-color: var(--text-muted); transform: translateY(-1px); }
+
+/* ── PROFIL CARD ── */
+.profile-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.profile-card-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.profile-card-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.profile-card-badge {
+  background: rgba(75, 124, 243, 0.12);
+  color: var(--blue-light);
+  border: 1px solid rgba(75, 124, 243, 0.25);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.profile-rows { padding: 0.5rem 0; }
+
+.profile-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.profile-row:last-child { border-bottom: none; }
+
+.profile-key {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.profile-val {
+  font-size: 0.85rem;
+  color: var(--text);
+  font-weight: 500;
+  text-align: right;
+}
+
+.profile-val.blue { color: var(--blue-light); }
+.profile-val.violet { color: var(--violet-light); }
+
+.skill-bars { padding: 1.25rem 1.5rem; border-top: 1px solid var(--border); }
+
+.skill-bar { margin-bottom: 1rem; }
+.skill-bar:last-child { margin-bottom: 0; }
+
+.skill-bar-top {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+
+.skill-bar-name {
+  font-size: 0.78rem; color: var(--text-muted); font-weight: 400;
+}
+
+.skill-bar-level {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem; color: var(--text-dim);
+}
+
+.bar-track {
+  height: 3px; background: var(--border-light); border-radius: 2px; overflow: hidden;
+}
+
+.bar-fill { height: 100%; border-radius: 2px; }
+.bar-b { background: var(--blue); }
+.bar-v { background: var(--violet); }
+
+/* ── SECTION COMMONS ── */
+section {
+  padding: 6rem 5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-intro {
+  display: flex; align-items: flex-start; gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.section-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  padding-top: 0.35rem;
+  white-space: nowrap;
+}
+
+.section-heading {}
+
+.section-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--blue-light);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+
+/* ── COMPÉTENCES ── */
+.skills-section { background: var(--dark); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.skill-block {
+  background: var(--card);
+  padding: 1.75rem;
+  transition: background 0.2s;
+}
+
+.skill-block:hover { background: #222230; }
+
+.skill-block-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.tag {
+  background: var(--dark);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.25rem 0.7rem;
+  border-radius: 3px;
+  transition: all 0.15s;
+}
+
+.tag:hover { border-color: var(--blue); color: var(--blue-light); }
+
+/* ── FORMATION ── */
+.timeline { max-width: 700px; }
+
+.tl-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.tl-item:last-child { border-bottom: none; }
+
+.tl-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  padding-top: 0.2rem;
+}
+
+.tl-content {}
+
+.tl-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+
+.tl-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.63rem;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge-tb { background: rgba(75, 124, 243, 0.1); color: var(--blue-light); border: 1px solid rgba(75, 124, 243, 0.25); }
+.badge-ab { background: rgba(124, 92, 191, 0.1); color: var(--violet-light); border: 1px solid rgba(124, 92, 191, 0.25); }
+.badge-b  { background: rgba(136, 136, 168, 0.08); color: var(--text-muted); border: 1px solid var(--border); }
+
+/* ── EXPÉRIENCE ── */
+.xp-section { background: var(--dark); }
+
+.xp-list { max-width: 800px; }
+
+.xp-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.xp-item:last-child { border-bottom: none; }
+
+.xp-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  padding-top: 0.2rem;
+}
+
+.xp-company {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.xp-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── INTÉRÊTS ── */
+.interests-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+.interest-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 400;
+  padding: 0.5rem 1.1rem;
+  border-radius: 4px;
+  transition: all 0.15s;
+  cursor: default;
+}
+
+.interest-item:hover { border-color: var(--violet); color: var(--violet-light); }
+
+.interest-item.highlight {
+  border-color: rgba(124, 92, 191, 0.35);
+  color: var(--violet-light);
+  background: rgba(124, 92, 191, 0.06);
+}
+
+.champion-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--blue-light);
+  border: 1px solid rgba(75, 124, 243, 0.3);
+  background: rgba(75, 124, 243, 0.08);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+  margin-left: 0.4rem;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+/* ── CONTACT ── */
+.contact-section {
+  border-bottom: none;
+  padding: 6rem 5rem 7rem;
+}
+
+.contact-inner {
+  max-width: 640px;
+}
+
+.contact-inner p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.contact-links {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.contact-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  transition: background 0.15s;
+  cursor: default;
+}
+
+.contact-link:last-child { border-bottom: none; }
+.contact-link:hover { background: var(--card); }
+.contact-link a { text-decoration: none; }
+
+.contact-link-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: 'DM Mono', monospace;
+  min-width: 80px;
+}
+
+.contact-link-val {
+  font-size: 0.92rem;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.contact-link-val.link { color: var(--blue-light); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 1.5rem 5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.footer-info {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-left > * {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.hero-eyebrow { animation-delay: 0.05s; }
+h1            { animation-delay: 0.15s; }
+.hero-desc    { animation-delay: 0.25s; }
+.hero-actions { animation-delay: 0.35s; }
+
+.hero-right {
+  opacity: 0;
+  animation: fadeIn 0.7s ease 0.3s forwards;
+}
+
+/* ── PROJETS ── */
+.projets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.projet-card {
+  background: var(--card);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: background 0.2s;
+  border-bottom: 1px solid var(--border);
+}
+
+.projet-card:hover { background: #222230; }
+
+.projet-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.projet-card--wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 700px) {
+  .projet-card--wide { grid-column: span 1; }
+}
+
+.projet-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.projet-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.projet-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-weight: 300;
+  flex: 1;
+}
+
+.projet-footer {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.projet-module {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--blue-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links a { padding: 0 0.9rem; font-size: 0.78rem; }
+  .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 3rem; }
+  .hero-photo { display: none; }
+  section { padding: 4rem 1.5rem; }
+  .contact-section { padding: 4rem 1.5rem 5rem; }
+  footer { padding: 1.25rem 1.5rem; flex-direction: column; text-align: center; }
+  .tl-item, .xp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .tl-year, .xp-date { padding-top: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Ylias <span>Loo</span></a>
+  <ul class="nav-links">
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#formation">Formation</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#interests">Intérêts</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Portfolio — 2026</p>
+    <h1>Ylias<br><em>Loo</em></h1>
+    <p class="hero-desc">
+      Étudiant en BUT Informatique, passionné par le développement, les réseaux et la cybersécurité. Rigoureux et curieux, je cherche à approfondir mes compétences techniques à travers des projets concrets.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Me contacter</a>
+      <a href="#formation" class="btn btn-ghost">Mon parcours</a>
+    </div>
+  </div>
+
+  <!-- PHOTO -->
+  <div class="hero-photo">
+    <div class="photo-placeholder">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+      <span>Photo à venir</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="profile-card">
+      <div class="profile-card-header">
+        <span class="profile-card-title">Profil étudiant</span>
+        <span class="profile-card-badge">2026</span>
+      </div>
+      <div class="profile-rows">
+        <div class="profile-row">
+          <span class="profile-key">Niveau d'études</span>
+          <span class="profile-val blue">BUT Informatique — Année 1</span>
+        </div>
+        <div class="profile-row">
+          <span class="profile-key">Établissement</span>
+          <span class="profile-val">Université de Nantes — BUT info</span>
+        </div>
+        <div class="profile-row">
+          <span class="profile-key">Localisation</span>
+          <span class="profile-val">Guyane / Nantes</span>
+        </div>
+        <div class="profile-row">
+          <span class="profile-key">Permis</span>
+          <span class="profile-val">Permis B</span>
+        </div>
+        <div class="profile-row">
+          <span class="profile-key">Langages</span>
+          <span class="profile-val violet">Python · C · Go · HTML · CSS</span>
+        </div>
+      </div>
+      <div class="skill-bars">
+        <div class="skill-bar">
+          <div class="skill-bar-top">
+            <span class="skill-bar-name">Python</span>
+            <span class="skill-bar-level">Intermédiaire</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill bar-b" style="width:50%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar-top">
+            <span class="skill-bar-name">C / Go</span>
+            <span class="skill-bar-level">Intermédiaire</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill bar-v" style="width:65%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar-top">
+            <span class="skill-bar-name">HTML / CSS</span>
+            <span class="skill-bar-level">Apprenti - Intermédiaire</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill bar-b" style="width:45%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- COMPÉTENCES -->
+<section class="skills-section" id="skills">
+  <div class="section-intro">
+    <span class="section-number">01</span>
+    <div class="section-heading">
+      <p class="section-tag">Compétences techniques</p>
+      <h2>Outils & langages</h2>
+    </div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <div class="skill-block-label">Langages</div>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">C</span>
+        <span class="tag">Go</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-label">Outils</div>
+      <div class="tags">
+        <span class="tag">VS Code</span>
+        <span class="tag">Spyder</span>
+        <span class="tag">Logisim</span>
+        <span class="tag">Builder</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Word</span>
+        <span class="tag">Intellij</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-label">Domaines</div>
+      <div class="tags">
+        <span class="tag">Cybersécurité</span>
+        <span class="tag">Développement</span>
+        <span class="tag">Réseaux</span>
+        <span class="tag">Informatique bas niveau</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-label">Savoir-être</div>
+      <div class="tags">
+        <span class="tag">Accueil client</span>
+        <span class="tag">Logistique</span>
+        <span class="tag">Rigueur</span>
+        <span class="tag">Travail en équipe</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION -->
+<section id="formation">
+  <div class="section-intro">
+    <span class="section-number">02</span>
+    <div class="section-heading">
+      <p class="section-tag">Parcours académique</p>
+      <h2>Formation</h2>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-year">2022</span>
+      <div class="tl-content">
+        <p class="tl-title">PSC1 — Premiers secours niveau 1</p>
+        <p class="tl-sub">Gestes et soins d'urgence</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2022</span>
+      <div class="tl-content">
+        <p class="tl-title">DNB — Brevet des collèges</p>
+        <span class="badge badge-b">Mention bien</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2024</span>
+      <div class="tl-content">
+        <p class="tl-title">BIA — Brevet d'Initiation Aéronautique</p>
+        <p class="tl-sub">Navigation & aéronautique</p>
+        <span class="badge badge-tb">Mention très bien</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2024</span>
+      <div class="tl-content">
+        <p class="tl-title">Baccalauréat Général</p>
+        <p class="tl-sub">Spécialité Mathématiques & NSI</p>
+        <span class="badge badge-ab">Mention assez bien</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2025 — en cours</span>
+      <div class="tl-content">
+        <p class="tl-title">BUT Informatique</p>
+        <p class="tl-sub">Université de Nantes</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPÉRIENCE -->
+<section class="xp-section" id="experience">
+  <div class="section-intro">
+    <span class="section-number">03</span>
+    <div class="section-heading">
+      <p class="section-tag">Expériences professionnelles</p>
+      <h2>Expérience</h2>
+    </div>
+  </div>
+  <div class="xp-list">
+    <div class="xp-item">
+      <span class="xp-date">Déc. 2021<br>Stage</span>
+      <div>
+        <p class="xp-company">Librairie « Lettre d'Amazonie »</p>
+        <p class="xp-desc">Logistique, saisie informatique et contact avec la clientèle dans un environnement commercial.</p>
+      </div>
+    </div>
+    <div class="xp-item">
+      <span class="xp-date">2022 – 2025<br>Emploi régulier</span>
+      <div>
+        <p class="xp-company">Société Will Ergo</p>
+        <p class="xp-desc">Participation au Salon CGSS, accueil clientèle, livraison et aménagement ergonomique, animation avec les ergonomes et ergothérapeutes de Guyane.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="section-intro">
+    <span class="section-number">04</span>
+    <div class="section-heading">
+      <p class="section-tag">Travaux académiques</p>
+      <h2>Projets</h2>
+    </div>
+  </div>
+  <div class="projets-grid">
+
+    <div class="projet-card">
+      <h3 class="projet-title">Numérique &amp; Écologie — Jeu narratif</h3>
+      <p class="projet-desc">Jeu narratif à choix multiples réalisé sous PowerPoint. Le joueur incarne un ministre du numérique en 2050 et gère la crise énergétique via 4 politiques (Régulation, Innovation, Passivité, Décroissance). Le projet comprend aussi une version Python/Pygame avec un moteur de scènes, un arbre narratif ramifié et 4 mini-jeux : Snake, Memory, Désamorçage de code et Recyclage.</p>
+      <div class="projet-footer">
+        <div class="projet-tags">
+          <span class="tag">PowerPoint</span>
+          <span class="tag">Python</span>
+          <span class="tag">Pygame</span>
+          <span class="tag">Économie</span>
+        </div>
+        <span class="projet-module">SAE Économie — S1</span>
+      </div>
+    </div>
+
+    <div class="projet-card">
+      <h3 class="projet-title">Moteur de particules — Go</h3>
+      <p class="projet-desc">Moteur de particules modulaire écrit en Go avec Ebiten. Comportements séparés en extensions indépendantes (gravité, rebond, collision, souris...). Configuration JSON, recyclage mémoire et tests unitaires sans dépendance graphique.</p>
+      <div class="projet-footer">
+        <div class="projet-tags">
+          <span class="tag">Go</span>
+          <span class="tag">Ebiten</span>
+          <span class="tag">Tests unitaires</span>
+        </div>
+        <span class="projet-module">SAE Particules — S1</span>
+      </div>
+    </div>
+
+    <div class="projet-card">
+      <h3 class="projet-title">Site e-commerce — KINGSTON</h3>
+      <p class="projet-desc">Site de vente de sneakers haut de gamme en HTML/CSS pur. Design sombre premium avec fiches produits, panier, connexion et inscription. Mise en page intégrale en CSS Grid, responsive et thème doré.</p>
+      <div class="projet-footer">
+        <div class="projet-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">CSS Grid</span>
+        </div>
+        <span class="projet-module">SAE Interface Web — S1</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INTÉRÊTS -->
+<section id="interests">
+  <div class="section-intro">
+    <span class="section-number">05</span>
+    <div class="section-heading">
+      <p class="section-tag">Centres d'intérêt</p>
+      <h2>Intérêts</h2>
+    </div>
+  </div>
+  <div class="interests-list">
+    <span class="interest-item">Tir à l'arc</span>
+    <span class="interest-item highlight">
+      Tir à la carabine
+      <span class="champion-label">Champion Guyane 2023–2025</span>
+    </span>
+    <span class="interest-item">Cybersécurité</span>
+    <span class="interest-item">Développement</span>
+    <span class="interest-item">Réseau</span>
+    <span class="interest-item">Lecture</span>
+    <span class="interest-item">Jeux vidéo</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-intro">
+    <span class="section-number">06</span>
+    <div class="section-heading">
+      <p class="section-tag">Coordonnées</p>
+      <h2>Me contacter</h2>
+    </div>
+  </div>
+  <div class="contact-inner">
+    <p>Disponible pour un stage ou une alternance en informatique. N'hésitez pas à me contacter par e-mail ou par téléphone.</p>
+    <div class="contact-links">
+      <div class="contact-link">
+        <span class="contact-link-label">E-mail</span>
+        <a href="mailto:yliasbluestacks@gmail.com" class="contact-link-val link">yliasbluestacks@gmail.com</a>
+      </div>
+      <div class="contact-link">
+        <span class="contact-link-label">Téléphone</span>
+        <span class="contact-link-val">+594 694 22 37 29</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Ylias Loo</span>
+  <span class="footer-info">BUT Informatique — Université de Nantes — 2026</span>
+</footer>
+
+</body>
+</html>
